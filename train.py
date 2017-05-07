@@ -63,7 +63,11 @@ from sklearn import svm
 clf = svm.SVC()
 clf.fit(training_inputs, training_targets)
 
-# Step 6 Testing
+# Step 6 Save the Model for Production
+from sklearn.externals import joblib
+joblib.dump(clf, 'model.pkl')
+
+# Step 7 Testing
 predictions = clf.predict(test_inputs)
 accuracy = np.mean(predictions==test_targets)
 print("Accuracy: ", accuracy*100., "%")
